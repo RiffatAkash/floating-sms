@@ -1,0 +1,188 @@
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ms.purplepatch.online/overlay/floating-pran-june-21/jquery.min.js"></script>
+  <script src="https://ms.purplepatch.online/overlay/floating-pran-june-21/customEase.min.js"></script>
+  <script src="https://ms.purplepatch.online/overlay/floating-pran-june-21/gsap.min.js"></script>
+</head>
+<body>
+
+<section id="pp_wrapper">
+    <div id="sc_wrapper_purple">
+      <div id="wrapper_purple">
+      </div>
+      <div id="next_purple" style="opacity: 0;"></div>
+      <div id="shake_text_purple" style="opacity: 0;"></div>
+    </div>
+    <div id="dragEl_purple"></div>
+    <div id="closeBtn_purple"></div>
+</section>
+
+<script src="code.js"></script>
+<script>
+
+  /*defination variable*/
+  var _document;
+  var _window;
+  var iframe;
+  var assets_url = "https://ms.purplepatch.online/overlay/floating-pran-june-21/";
+  var bgs = ['Preview1.jpg','Preview2.jpg'];
+
+  // e l e m e n t s
+  var o = {};
+  o.container = document.getElementById("pp_wrapper");
+  o.closeBtn = document.getElementById("closeBtn_purple");
+  o.wrapper = document.getElementById("wrapper_purple");
+  o.sc_wrapper = document.getElementById("sc_wrapper_purple");
+  o.dragEl = document.getElementById("dragEl_purple");
+  o.shake_text = document.getElementById("shake_text_purple");
+  o.cta = document.getElementById("cta_purple");
+  o.next = document.getElementById("next_purple");
+
+  // l o c a l
+  var ddef = {
+    topY: 0,
+    ftClick: true,
+    adEnd: false,
+    cokeStarted: false,
+    box: {
+      w: 200,
+      h: 167,
+      cur: 0,
+      imgs: [],
+      list: [],
+    },
+    col: [
+      "#95B9C7",
+      "#AFDCEC",
+      "#c0e7ca",
+    ],
+    drag: {
+      x: 0,
+      y: 0,
+      lx: 0,
+      ly: 0,
+      dx: 0,
+      dy: 0,
+    },
+    screen: {
+      w: 0,
+      h: 0,
+      x: 0,
+      y: 0,
+    },
+    w: 200,
+    h: 167,
+    canvas: null,
+    ctx: null,
+    circles: {
+      amm: 20,
+      list: [],
+      posRed: 0.8, // pos reduce into center
+    },
+    circles2: {
+      amm: 30,
+      list: [],
+      posRed: 0.8, // pos reduce into center
+    },
+    can: {
+      rot: 0,
+      drot: 0,
+      mx: 0,
+      my: 0,
+      x: 50,
+      y: 17,
+      w: 46,
+      h: 99,
+    },
+    shakeCalc: {
+      list: new Array(30),
+    },
+    points: [],
+  }
+  
+  function goOut(){
+    var body = _document.getElementsByTagName("body");
+    $("section").appendTo( body );
+  }
+
+  function setCss(){
+    var cssLink = document.createElement("link")
+    cssLink.href = assets_url+"style.css";
+    cssLink.rel = "stylesheet";
+    cssLink.type = "text/css";
+    _window.document.head.appendChild(cssLink);
+  }
+
+  function closeAd(){
+    ddef.closed = true;
+    explodeAd("close");
+    gsap.to(o.container, 0.25, {scale: 0, ease: Back.easeIn,
+      onComplete: function(){ o.container.style.display = "none"; }
+    })
+    ddef.adEnd = true;
+  }
+  o.closeBtn.addEventListener("click", closeAd);
+  
+/*ad hiding process*/
+$(document).on('visibilitychange', function() {
+    if(document.visibilityState == 'visible') {
+      console.log( 'content now visible' );
+      setTimeout(closeAd, 15000); /* close after 12 seconds */
+    }
+});
+
+if ( ! isHidden('#pp_wrapper') ) {
+  console.log('content is visible');
+  setTimeout(closeAd, 15000); /* close after 12 seconds */
+}
+function isHidden(el) {
+  return (el.offsetParent === null)
+}
+/*ad hiding process*/
+
+  (function() {
+
+    try {
+      var curWindow = window;
+      var myInterval = setInterval( function(){
+        if(curWindow.frameElement == null){
+          _document = curWindow.document;
+
+          _window = curWindow;
+          clearInterval(myInterval);
+          initIFrame();
+        } else {
+          iframe = curWindow.frameElement;
+        }
+        curWindow = curWindow.parent;
+      }, 10);
+    }
+    catch(error) {
+      console.error(error);
+    }
+  })();
+
+  function ctaFunction(){
+    _window.open("{CLICK_MACRO}");
+  }
+
+
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          window.oRequestAnimationFrame      ||
+          window.msRequestAnimationFrame     ||
+          function(/* function */ callback, /* DOMElement */ element){
+              window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+</script>
+
+</body>
+</html>

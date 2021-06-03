@@ -1,0 +1,91 @@
+#pp_wrapper * {
+    margin: 0;
+    padding: 0;
+}
+
+#dragEl_purple {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+    background-image: url('https://ms.purplepatch.online/overlay/floating-pran-june-21/empty.png') !important;
+    z-index: 99;
+}
+
+#closeBtn_purple {
+    position: absolute !important;
+    width: 24px !important;
+    height: 24px !important;
+    top: -5px !important;
+    right: -5px !important;
+    background-image: url('https://ms.purplepatch.online/overlay/floating-pran-june-21/closeBtn.png') !important;
+    cursor: pointer !important;
+    z-index: 999;
+}
+
+#wrapper_purple {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+}
+
+#canvas_purple {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+}
+#sc_wrapper_purple {
+    width: 200px !important;
+    height: 167px !important;
+    position: absolute !important;
+    z-index: 10;
+}
+
+#shake_text_purple {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+}
+
+#cta_purple {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+}
+
+#next_purple {
+    position: absolute !important;
+    width: 200px !important;
+    height: 167px !important;
+}
+
+
+#pp_wrapper {
+    width: 200px !important;
+    height: 167px !important;
+    position: fixed !important;
+    border: 0px solid #CCC !important;
+    -webkit-perspective: 1000px !important;
+    -moz-perspective: 1000px !important;
+    -o-perspective: 1000px !important;
+    perspective: 1000px !important;
+    z-index: 9999999 !important;
+    cursor: grab !important;
+    right: 14px;
+    border-radius: 5px !important;
+}
+
+.rct {
+    width: 200px !important;
+    height: 167px !important;
+    position: absolute !important;
+}
+
+.noDisplay {
+    display: none !important;
+}
+
+.noEvents{
+  pointer-events: none !important;
+}
